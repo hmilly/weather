@@ -1,21 +1,74 @@
 .App {
   display: grid;
   height: 100vh;
+  width: 100vw;
   grid-template-rows: 0.2fr 1fr;
   grid-template-columns: 1fr;
 }
 
-header{
+header {
   background-color: black;
   border-bottom: white 1px solid;
 }
 
-h1 {
+header h1 {
   text-align: center;
   color: white;
   text-decoration: underline;
 }
 
-main{
+main {
+  display: grid;
+  grid-template-rows: 0.2fr 1fr;
+  grid-template-columns: 1fr;
+  padding: 10px;
+  align-items: start;
+  justify-items: center;
   background-color: navy;
+  color: white;
+}
+
+main input {
+  width: 80%;
+  height: 40px;
+  font-size: 30px;
+}
+
+main div {
+  display: grid;
+  grid-template-rows: 0.2fr 1fr 0.2fr;
+  grid-template-columns: 1fr;
+  width: 90%;
+  max-width: 700px;
+  align-items: center;
+  border: solid 5px black;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+main div span {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 1px black solid;
+}
+
+main div section {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 0.5fr 1fr;
+  align-items: center;
+  justify-items: center;
+  text-align: start;
+  font-size: 1.5em;
+  border-bottom: 1px black solid;
+}
+
+main div img {
+  height: 200px;
+  width: 200px;
+  padding: 10px;
 }
