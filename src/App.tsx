@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import getweather from "./api";
+import key from "./login";
 
 const egObj = {
   location: {
@@ -38,6 +39,14 @@ const egObj = {
 
 function App() {
   const [weather, setWeather] = useState<object>({});
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    console.log("ran");
+    getweather("london", key).then((data) => setWeather(data));
+
+    console.log(weather);
+  }, [search]);
 
   return (
     <div className="App">
@@ -45,7 +54,13 @@ function App() {
         <h1>Weather app</h1>
       </header>
       <main>
-        <input placeholder="Search bar"></input>
+        <input
+          placeholder="Search bar"
+          onKeyDown={(i: React.KeyboardEvent<HTMLInputElement>) => {
+            setSearch(i.currentTarget.value);
+            console.log(search);
+          }}
+        ></input>
         <div>
           <span>
             <h1>{egObj.location.region}</h1>
@@ -53,7 +68,10 @@ function App() {
           </span>
 
           <section>
-            <img src={egObj.current.condition.icon}></img>
+            <img
+              src={egObj.current.condition.icon}
+              alt={"current weather icon"}
+            ></img>
             <aside>
               <h1>{egObj.current.temp_c} c</h1>
               <h1>Feels like: {egObj.current.feelslike_c} c</h1>
