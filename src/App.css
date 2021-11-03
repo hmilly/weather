@@ -19,24 +19,43 @@ header h1 {
 
 main {
   display: grid;
-  grid-template-rows: 0.2fr 1fr;
+  grid-template-rows: 0.2fr 1fr 0.2fr;
   grid-template-columns: 1fr;
+  gap: 10px;
   padding: 10px;
   align-items: start;
   justify-items: center;
   background-color: navy;
   color: white;
 }
-
-main input {
-  width: 80%;
+.searchBar {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 0.2fr;
   height: 40px;
-  font-size: 30px;
+  width: 60%;
 }
 
-main div {
+.searchBar input,
+button {
+  font-size: 30px;
+  padding: 10px;
+}
+button {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+button:hover {
+  cursor: pointer;
+  background-color: grey;
+  color: white;
+  font-size: 28px;
+}
+
+.weatherCard {
   display: grid;
-  grid-template-rows: 0.2fr 1fr 0.2fr;
+  grid-template-rows: 0.2fr 0.1fr 1fr;
   grid-template-columns: 1fr;
   width: 90%;
   max-width: 700px;
@@ -47,28 +66,42 @@ main div {
   text-align: center;
 }
 
-main div span {
+.weatherCard span {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
+}
+.weatherCard h2 {
   border-bottom: 1px black solid;
 }
 
-main div section {
+.weatherCard div {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 0.5fr 1fr;
-  align-items: center;
-  justify-items: center;
-  text-align: start;
-  font-size: 1.5em;
-  border-bottom: 1px black solid;
 }
 
-main div img {
-  height: 200px;
-  width: 200px;
-  padding: 10px;
+.weatherCard section {
+  display: grid;
+  grid-template-rows: 1fr 0.5fr;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+  font-size: 1.5em;
+}
+
+.weatherCard img {
+  height: 150px;
+  width: 150px;
+}
+
+.weatherCard aside {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  justify-items: center;
+  font-size: 1.5em;
 }
