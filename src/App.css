@@ -55,35 +55,26 @@ button:hover {
 
 .weatherCard {
   display: grid;
-  grid-template-rows: 0.2fr 0.1fr 1fr;
-  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1fr;
+  grid-template-columns: 1fr 1fr;
   width: 90%;
   max-width: 700px;
   align-items: center;
   border: solid 5px black;
   border-radius: 10px;
   padding: 10px;
-  text-align: center;
+  grid-template-areas: 
+  "aside span"
+  "div div"; 
 }
 
-.weatherCard span {
+.weatherCard aside {
   display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   align-items: center;
-  justify-items: center;
 }
-.weatherCard h2 {
-  border-bottom: 1px black solid;
-}
-
-.weatherCard div {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 0.5fr 1fr;
-}
-
-.weatherCard section {
+.weatherCard span {
   display: grid;
   grid-template-rows: 1fr 0.5fr;
   grid-template-columns: 1fr;
@@ -91,17 +82,20 @@ button:hover {
   justify-items: center;
   font-size: 1.5em;
 }
-
 .weatherCard img {
   height: 150px;
   width: 150px;
 }
 
-.weatherCard aside {
+.weatherCard div {
+  grid-area: div;
   display: grid;
+  gap:10px;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: start;
-  justify-items: center;
+  justify-items: start;
   font-size: 1.5em;
+  padding: 0 10px;
+  border-top: solid black 1px;
 }
