@@ -5,10 +5,34 @@ export const getweather = async (location: string, key: string) => {
 };
 
 export const getsearches = async (location: string, key: string) => {
-  const url = ``;
-
-  return await (await fetch(url)).json();
+  console.log(location)
+  return await (
+    await fetch(
+      `https://geoapify-address-autocomplete.p.rapidapi.com/v1/geocode/autocomplete?` +
+        `text=${location}&type=city`,
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "geoapify-address-autocomplete.p.rapidapi.com",
+          "x-rapidapi-key": key,
+        },
+      }
+    )
+  ).json();
 };
+
+export interface Citys {
+  features: [
+    {
+      properties: {
+        city: string;
+        state: string;
+        country: string;
+        formatted: string;
+      };
+    }
+  ];
+}
 
 export interface Weathers {
   location: {
@@ -18,7 +42,6 @@ export interface Weathers {
     localtime: string;
   };
   current: {
-    last_updated: string;
     temp_c: number;
     temp_f: number;
     condition: {
@@ -27,20 +50,13 @@ export interface Weathers {
     };
     wind_mph: number;
     wind_kph: number;
-    wind_degree: number;
     wind_dir: string;
-    pressure_mb: number;
-    pressure_in: number;
     precip_mm: number;
-    precip_in: number;
     humidity: number;
     cloud: number;
     feelslike_c: number;
     feelslike_f: number;
-    vis_km: number;
     vis_miles: number;
     uv: number;
-    gust_mph: number;
-    gust_kph: number;
   };
 }
