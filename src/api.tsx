@@ -5,7 +5,6 @@ export const getweather = async (location: string, key: string) => {
 };
 
 export const getsearches = async (location: string, key: string) => {
-  console.log(location)
   return await (
     await fetch(
       `https://geoapify-address-autocomplete.p.rapidapi.com/v1/geocode/autocomplete?` +
@@ -26,9 +25,7 @@ export interface Citys {
     {
       properties: {
         city: string;
-        state: string;
         country: string;
-        formatted: string;
       };
     }
   ];

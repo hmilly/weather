@@ -30,10 +30,8 @@ main {
 }
 .searchBar {
   display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 0.2fr;
-  height: 40px;
-  width: 60%;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 400px 75px;
 }
 
 .searchBar input,
@@ -52,6 +50,29 @@ button:hover {
   color: white;
   font-size: 28px;
 }
+.searchBar ul {
+  display: grid;
+  position: absolute;
+  grid-template-columns: 400px;
+  grid-template-rows: 1fr;
+  margin-top: 60px;
+  padding: 0;
+  list-style-type: none;
+  border: solid black 1px;
+  border-radius:  0 0 8px 8px;
+}
+
+.searchBar li {
+  border: solid black 1px;
+  padding: 10px;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.87);
+}
+.searchBar li:hover {
+  cursor: pointer;
+  font-weight: 500;
+  background-color: rgba(37, 33, 33, 0.747);
+}
 
 .weatherCard {
   display: grid;
@@ -63,9 +84,9 @@ button:hover {
   border: solid 5px black;
   border-radius: 10px;
   padding: 10px;
-  grid-template-areas: 
-  "aside span"
-  "div div"; 
+  grid-template-areas:
+    "aside span"
+    "div div";
 }
 
 .weatherCard aside {
@@ -90,7 +111,7 @@ button:hover {
 .weatherCard div {
   grid-area: div;
   display: grid;
-  gap:10px;
+  gap: 10px;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: start;

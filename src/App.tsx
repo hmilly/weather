@@ -3,6 +3,7 @@ import "./App.css";
 import { getweather, getsearches, Weathers, Citys } from "./api";
 import { key, rKey } from "./login";
 import WeatherCard from "./components/WeatherCard";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   const [weather, setWeather] = useState<Weathers>();
@@ -13,12 +14,8 @@ function App() {
     if (weather === undefined) {
       lookUpWeather("london");
     }
-    if (citySearch !== undefined) {
-      citySearch.features.map((x) => {
-        console.log(x.properties.city);
-      });
-    }
-  }, [weather, citySearch]);
+    search.length > 2 ? lookUpCity(search) : setCitySearch(undefined);
+  }, [weather, search]);
 
   const lookUpWeather = (place: string) => {
     getweather(place, key)
@@ -28,7 +25,7 @@ function App() {
       .catch((error) => {
         return Promise.reject();
       });
-    console.log("lookup", weather);
+    setSearch("");
   };
 
   const lookUpCity = async (place: string) => {
@@ -48,14 +45,11 @@ function App() {
         <span className="searchBar">
           <input
             placeholder="Search bar"
-            onKeyDown={(i: React.KeyboardEvent<HTMLInputElement>) => {
-              if (i.currentTarget.value.length > 2) {
-                lookUpCity(i.currentTarget.value);
-                setSearch(i.currentTarget.value);
-              }
+            value={search}
+            onChange={(i: React.ChangeEvent<HTMLInputElement>) => {
+              setSearch(i.currentTarget.value);
             }}
           />
-
           <button
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
@@ -64,11 +58,19 @@ function App() {
           >
             Go!
           </button>
+          {citySearch !== undefined && (
+            <ul>
+              {citySearch.features.map((x, i) => (
+                <SearchResults
+                  key={i}
+                  result={x.properties}
+                  setSearch={setSearch}
+                />
+              ))}
+            </ul>
+          )}
         </span>
-
         {weather !== undefined && <WeatherCard weather={weather} />}
-
-        {/* <div></div> */}
       </main>
     </div>
   );
