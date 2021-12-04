@@ -44,7 +44,7 @@ function App() {
       <main>
         <span className="searchBar">
           <input
-            placeholder="Search bar"
+            placeholder="Enter a city name"
             value={search}
             onChange={(i: React.ChangeEvent<HTMLInputElement>) => {
               setSearch(i.currentTarget.value);
