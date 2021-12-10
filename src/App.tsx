@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./styles/app.scss";
 import { getweather, getsearches, Weathers, Citys } from "./api";
 import { key, rKey } from "./login";
 import WeatherCard from "./components/WeatherCard";
@@ -11,17 +11,15 @@ function App() {
   const [citySearch, setCitySearch] = useState<Citys>();
 
   useEffect(() => {
-    if (weather === undefined) {
-      lookUpWeather("london");
-    }
+    if (weather === undefined) lookUpWeather("london");
     search.length > 2 ? lookUpCity(search) : setCitySearch(undefined);
   }, [weather, search]);
 
   const lookUpWeather = (place: string) => {
     getweather(place, key)
-      .then((data) => {
-        data.error ? console.log("ERROR:", data.error) : setWeather(data);
-      })
+      .then((data) =>
+        data.error ? console.log("ERROR:", data.error) : setWeather(data)
+      )
       .catch((error) => {
         return Promise.reject();
       });
@@ -58,7 +56,7 @@ function App() {
           >
             Go!
           </button>
-          {citySearch !== undefined && (
+          {citySearch !== undefined ? (
             <ul>
               {citySearch.features.map((x, i) => (
                 <SearchResults
@@ -68,9 +66,11 @@ function App() {
                 />
               ))}
             </ul>
+          ) : (
+            <></>
           )}
         </span>
-        {weather !== undefined && <WeatherCard weather={weather} />}
+        {weather !== undefined ? <WeatherCard weather={weather} /> : <></>}
       </main>
     </div>
   );

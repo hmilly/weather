@@ -9,9 +9,9 @@ const SearchResults = ({
 }) => {
   return (
     <li
-      onClick={(e: React.MouseEvent<HTMLLIElement>) => {
-        setSearch(e.currentTarget.innerText.split(",")[0]);
-      }}
+      onClick={(e: React.MouseEvent<HTMLLIElement>) =>
+        setSearch(e.currentTarget.innerText.split(",")[0])
+      }
     >
       {result.city}, {result.country}
     </li>
