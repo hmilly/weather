@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles/app.scss";
-import { getweather, getsearches, Weathers, Citys } from "./api";
+import { fetchWeather, fetchSearches, Weathers, Citys } from "./api";
 import { key, rKey } from "./login";
 import WeatherCard from "./components/WeatherCard";
 import SearchResults from "./components/SearchResults";
@@ -11,28 +11,13 @@ function App() {
   const [citySearch, setCitySearch] = useState<Citys>();
 
   useEffect(() => {
-    if (weather === undefined) lookUpWeather("london");
-    search.length > 2 ? lookUpCity(search) : setCitySearch(undefined);
+    if (weather === undefined)
+      fetchWeather("london", key).then((data) => setWeather(data));
+
+    search.length > 2
+      ? fetchSearches(search, rKey).then((data) => setCitySearch(data))
+      : setCitySearch(undefined);
   }, [weather, search]);
-
-  const lookUpWeather = (place: string) => {
-    getweather(place, key)
-      .then((data) =>
-        data.error ? console.log("ERROR:", data.error) : setWeather(data)
-      )
-      .catch((error) => {
-        return Promise.reject();
-      });
-    setSearch("");
-  };
-
-  const lookUpCity = async (place: string) => {
-    getsearches(place, rKey)
-      .then((data) => setCitySearch(data))
-      .catch((error) => {
-        return Promise.reject();
-      });
-  };
 
   return (
     <div className="App">
@@ -51,19 +36,21 @@ function App() {
           <button
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              lookUpWeather(search);
+              fetchWeather(search, key).then((data) => setWeather(data));
+              setSearch("");
             }}
           >
             Go!
           </button>
           {citySearch !== undefined ? (
             <ul>
-              {citySearch.features.map((x, i) => (
-                <SearchResults
-                  key={i}
-                  result={x.properties}
-                  setSearch={setSearch}
-                />
+              {citySearch.features.map((cityObj, i) => (
+                console.log(cityObj.properties)
+                // <SearchResults
+                //   key={i}
+                //   result={cityObj.properties}
+                //   setSearch={setSearch}
+                // />
               ))}
             </ul>
           ) : (

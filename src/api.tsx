@@ -1,23 +1,23 @@
-export const getweather = async (location: string, key: string) => {
+export const fetchWeather = async (location: string, key: string) => {
   const url = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${location}&aqi=yes`;
-
-  return await (await fetch(url)).json();
+  return await fetch(url)
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
 };
 
-export const getsearches = async (location: string, key: string) => {
-  return await (
-    await fetch(
-      `https://geoapify-address-autocomplete.p.rapidapi.com/v1/geocode/autocomplete?` +
-        `text=${location}&type=city`,
-      {
-        method: "GET",
-        headers: {
-          "x-rapidapi-host": "geoapify-address-autocomplete.p.rapidapi.com",
-          "x-rapidapi-key": key,
-        },
-      }
-    )
-  ).json();
+export const fetchSearches = async (location: string, key: string) => {
+  const url =
+    `https://geoapify-address-autocomplete.p.rapidapi.com/v1/geocode/` +
+    `autocomplete?text=${location}&type=city`;
+  return await fetch(url, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-host": "geoapify-address-autocomplete.p.rapidapi.com",
+      "x-rapidapi-key": key,
+    },
+  })
+    .then((res) => res.json())
+    .catch((error) => console.log(error));
 };
 
 export interface Citys {
