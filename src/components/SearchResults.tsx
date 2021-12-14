@@ -1,19 +1,19 @@
 import React from "react";
 
 const SearchResults = ({
-  result,
-  setSearch,
+  location,
+  setLocationInput,
 }: {
-  result: { city: string; country: string };
-  setSearch: (search: string) => void;
+  location: { city: string; country: string };
+  setLocationInput: (searchString: string) => void;
 }) => {
   return (
     <li
       onClick={(e: React.MouseEvent<HTMLLIElement>) =>
-        setSearch(e.currentTarget.innerText.split(",")[0])
+        setLocationInput(e.currentTarget.innerText.split(",")[0])
       }
     >
-      {result.city}, {result.country}
+      {location.city}, {location.country}
     </li>
   );
 };

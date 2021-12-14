@@ -1,23 +1,29 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./styles/app.scss";
-import { fetchWeather, fetchSearches, Weathers, Citys } from "./api";
-import { key, rKey } from "./login";
+import { fetchWeather, fetchSearches } from "./api";
+import { Weathers, Citys } from "./Interface";
+import { weatherKey, searchKey } from "./login";
 import WeatherCard from "./components/WeatherCard";
 import SearchResults from "./components/SearchResults";
 
 function App() {
   const [weather, setWeather] = useState<Weathers>();
-  const [search, setSearch] = useState("");
+  const [locationInput, setLocationInput] = useState("");
   const [citySearch, setCitySearch] = useState<Citys>();
 
+  // initial mount
   useEffect(() => {
-    if (weather === undefined)
-      fetchWeather("london", key).then((data) => setWeather(data));
+    fetchWeather("london", weatherKey).then((data) => setWeather(data));
+  }, []);
 
-    search.length > 2
-      ? fetchSearches(search, rKey).then((data) => setCitySearch(data))
+  // on input value above 2 letters, show searches, or clear form
+  useEffect(() => {
+    locationInput.length > 2
+      ? fetchSearches(locationInput, searchKey).then((data) =>
+          setCitySearch(data)
+        )
       : setCitySearch(undefined);
-  }, [weather, search]);
+  }, [locationInput]);
 
   return (
     <div className="App">
@@ -28,29 +34,31 @@ function App() {
         <span className="searchBar">
           <input
             placeholder="Enter a city name"
-            value={search}
+            value={locationInput}
             onChange={(i: React.ChangeEvent<HTMLInputElement>) => {
-              setSearch(i.currentTarget.value);
+              setLocationInput(i.currentTarget.value);
             }}
           />
           <button
+            disabled={locationInput.length > 2 ? false : true}
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              fetchWeather(search, key).then((data) => setWeather(data));
-              setSearch("");
+              fetchWeather(locationInput, weatherKey).then((data) =>
+                setWeather(data)
+              );
+              setLocationInput("");
             }}
           >
             Go!
           </button>
           {citySearch !== undefined ? (
             <ul>
-              {citySearch.features.map((cityObj, i) => (
-                console.log(cityObj.properties)
-                // <SearchResults
-                //   key={i}
-                //   result={cityObj.properties}
-                //   setSearch={setSearch}
-                // />
+              {citySearch.features.map((cityObj) => (
+                <SearchResults
+                  key={cityObj.properties.place_Id}
+                  location={cityObj.properties}
+                  setLocationInput={setLocationInput}
+                />
               ))}
             </ul>
           ) : (

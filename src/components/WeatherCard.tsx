@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Weathers } from "../api";
+import { useState } from "react";
+import { Weathers } from "../Interface";
 
 const WeatherCard = ({ weather }: { weather: Weathers }) => {
   const [tempC, setTempC] = useState(true);
@@ -7,7 +7,7 @@ const WeatherCard = ({ weather }: { weather: Weathers }) => {
   return (
     <>
       <div className="weatherCard">
-        <aside>
+        <section>
           <h2>{weather.location.name}</h2>
           <h2>{weather.location.region}</h2>
           <h2>{weather.location.country}</h2>
@@ -19,7 +19,7 @@ const WeatherCard = ({ weather }: { weather: Weathers }) => {
               .reverse()
               .join("-")}
           </h2>
-        </aside>
+        </section>
         <section>
           <img
             src={weather.current.condition.icon}
