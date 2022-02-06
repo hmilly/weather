@@ -4,6 +4,27 @@ import { Weathers } from "../Interface";
 const WeatherCard = ({ weather }: { weather: Weathers }) => {
   const [tempC, setTempC] = useState(true);
 
+  const setDirection = (dir: string) => {
+    switch (dir) {
+      case "W":
+        return "West";
+      case "S":
+        return "South";
+      case "E":
+        return "East";
+      default:
+        return "North";
+    }
+  };
+
+  const setUv = (no: number) => {
+    if (no <= 2) return "Low";
+    else if (no > 5 && no <= 7) return "High";
+    else if (no > 7 && no <= 10) return "Very High";
+    else if (no > 10) return "Extreme";
+    else return "Moderate";
+  };
+
   return (
     <>
       <div className="weatherCard">
@@ -35,14 +56,14 @@ const WeatherCard = ({ weather }: { weather: Weathers }) => {
             {tempC ? " C" : " F"}
           </p>
           <p>
-            💨:
+            Wind:
             <br></br>
-            {weather.current.wind_mph} mph
+            💨 {weather.current.wind_mph} mph
           </p>
           <p>
-            🌧️:
+            Rain:
             <br></br>
-            {weather.current.precip_mm}%
+            🌧️ {weather.current.precip_mm} mm
           </p>
           <p>
             Feels like:
@@ -51,36 +72,36 @@ const WeatherCard = ({ weather }: { weather: Weathers }) => {
             {tempC ? " C" : " F"}
           </p>
           <p>
-            🧭:
+            Direction:
             <br></br>
-            {weather.current.wind_dir}
+            {setDirection(weather.current.wind_dir)} 🧭
           </p>
           <p>
-            uv:
+            UV:
             <br></br>
-            {weather.current.uv}
+            {setUv(weather.current.uv)}
           </p>
           <p>
-            humidity:
+            Humidity:
             <br></br>
-            {weather.current.humidity}
+            {weather.current.humidity} %
           </p>
           <p>
-            mph:
+            Visibility:
             <br></br>
-            {weather.current.vis_miles}
+            {weather.current.vis_miles} miles
           </p>
           <p>
-            ☁️:
+            ☁️ cover:
             <br></br>
-            {weather.current.cloud}
+            {weather.current.cloud} %
           </p>
         </div>
       </div>
       <button
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => setTempC(!tempC)}
       >
-        {tempC ? "Celsius" : "Fareinheit"}
+        {tempC ? "Fareinheit" : "Celsius"}
       </button>
     </>
   );
