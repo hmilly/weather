@@ -8,42 +8,73 @@ const WeatherCard = ({ weather }: { weather: Weathers }) => {
     <>
       <div className="weatherCard">
         <section>
-          <h2>{weather.location.name}</h2>
-          <h2>{weather.location.region}</h2>
-          <h2>{weather.location.country}</h2>
-          <h2>
+          <p>{weather.location.name}</p>
+          <p>{weather.location.region}</p>
+          <p>{weather.location.country}</p>
+          <p>
             {weather.location.localtime.slice(10)}{" "}
             {weather.location.localtime
               .slice(0, 10)
               .split("-")
               .reverse()
               .join("-")}
-          </h2>
+          </p>
         </section>
         <section>
           <img
             src={weather.current.condition.icon}
             alt={"current weather icon"}
           />
-          <h2>{weather.current.condition.text}</h2>
+          <p>{weather.current.condition.text}</p>
         </section>
         <div>
-          <h2>
-            Temp: {tempC ? weather.current.temp_c : weather.current.temp_f}
+          <p>
+            Temp:
+            <br></br>
+            {tempC ? weather.current.temp_c : weather.current.temp_f}
             {tempC ? " C" : " F"}
-          </h2>
-          <h2>💨 {weather.current.wind_mph} mph</h2>
-          <h2>🌧️ {weather.current.precip_mm}%</h2>
-          <h2>
-            Feels like:{" "}
+          </p>
+          <p>
+            💨:
+            <br></br>
+            {weather.current.wind_mph} mph
+          </p>
+          <p>
+            🌧️:
+            <br></br>
+            {weather.current.precip_mm}%
+          </p>
+          <p>
+            Feels like:
+            <br></br>
             {tempC ? weather.current.feelslike_c : weather.current.feelslike_f}
             {tempC ? " C" : " F"}
-          </h2>
-          <h2>🧭 {weather.current.wind_dir}</h2>
-          <h2>uv: {weather.current.uv}</h2>
-          <h2>humidity: {weather.current.humidity}</h2>
-          <h2>mph: {weather.current.vis_miles}</h2>
-          <h2>☁️ {weather.current.cloud}</h2>
+          </p>
+          <p>
+            🧭:
+            <br></br>
+            {weather.current.wind_dir}
+          </p>
+          <p>
+            uv:
+            <br></br>
+            {weather.current.uv}
+          </p>
+          <p>
+            humidity:
+            <br></br>
+            {weather.current.humidity}
+          </p>
+          <p>
+            mph:
+            <br></br>
+            {weather.current.vis_miles}
+          </p>
+          <p>
+            ☁️:
+            <br></br>
+            {weather.current.cloud}
+          </p>
         </div>
       </div>
       <button

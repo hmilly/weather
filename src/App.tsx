@@ -55,7 +55,6 @@ function App() {
             <ul>
               {citySearch.features.map((cityObj) => (
                 <SearchResults
-                  key={cityObj.properties.place_Id}
                   location={cityObj.properties}
                   setLocationInput={setLocationInput}
                 />

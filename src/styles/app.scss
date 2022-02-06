@@ -1,6 +1,6 @@
 @mixin btn {
   border-radius: 5px;
-  font-size: 30px;
+  font-size: 25px;
   padding: 10px;
   background-color: black;
   color: white;
@@ -22,13 +22,15 @@
   display: grid;
   background-image: url("../img/cloudsbg.jpeg");
   background-size: cover;
-  height: 100vh;
-  grid-template-rows: 120px 1fr;
-  grid-template-columns: 1fr;
-  align-items: center;
+  min-height: 100vh;
+  min-width: 100%;
+  grid-template-rows: 60px minmax(650px, 1fr);
+  grid-template-columns: minmax(300px, 1fr);
+  gap: 10px;
+  align-items: start;
+  justify-items: center;
   header {
     h1 {
-      text-align: center;
       color: rgb(149, 251, 255);
       text-decoration: underline;
     }
@@ -36,43 +38,41 @@
 
   main {
     display: grid;
-    grid-template-rows: 0.2fr 1fr 0.2fr;
+    grid-template-rows: 80px minmax(500px, 1fr) 80px;
     grid-template-columns: 1fr;
-    gap: 15px;
-    align-items: start;
+    padding: 0 20px;
+    gap: 10px;
+    align-items: center;
     justify-items: center;
-    height: 100%;
     color: rgb(207, 242, 248);
     .searchBar {
       display: grid;
-      grid-template-rows: 60px 1fr;
-      grid-template-columns: 400px 75px;
+      position: relative;
+      grid-template-rows: 60px;
+      grid-template-columns: minmax(200px, 600px) 75px;
       border: solid 1px white;
       border-radius: 5px;
       ::placeholder {
         color: rgb(146, 142, 142);
       }
-      input,
-      button {
-        @include btn();
-      }
       input {
+        @include btn();
+        padding: 0;
         background-color: rgba(0, 0, 0, 0.596);
       }
       button {
+        @include btn();
         &:hover {
           @include btnHover();
         }
       }
       ul {
-        display: grid;
         position: absolute;
-        grid-template-columns: 400px;
-        grid-template-rows: 1fr;
-        margin-top: 60px;
-        padding: 0;
+        width: 100%;
+        margin-top: 62px;
         list-style-type: none;
         li {
+          height: 50px;
           padding: 10px;
           font-size: 20px;
           background-color: black;
@@ -87,13 +87,8 @@
 
     .weatherCard {
       display: grid;
-      grid-template-rows: 0.5fr 1fr;
-      grid-template-columns: 1fr 1fr;
-      width: 90%;
-      height: 100%;
-      max-width: 700px;
-      max-height: 600px;
-      align-items: center;
+      grid-template-rows: repeat(2, minmax(100px, 250px));
+      grid-template-columns: repeat(2, minmax(100px, 350px));
       border: solid 3px rgba(21, 24, 90, 0.788);
       background: rgba(21, 24, 90, 0.534);
       border-radius: 10px;
@@ -101,13 +96,10 @@
       grid-template-areas:
         "section section"
         "div div";
-      h2 {
+      p {
         margin: 3% 0;
-      }
-      section,
-      div {
-        height: 100%;
-        width: 100%;
+        font-size: 20px;
+        font-weight: 500;
       }
       section:nth-child(1) {
         display: grid;
@@ -117,7 +109,7 @@
       }
       section:nth-child(2) {
         display: grid;
-        grid-template-rows: 1fr 0.3fr;
+        grid-template-rows: 1fr 50px;
         grid-template-columns: 1fr;
         justify-items: center;
         align-items: center;
@@ -130,11 +122,14 @@
       div {
         display: grid;
         grid-area: div;
-        grid-template-columns: 1.2fr 0.9fr 0.9fr;
+        grid-template-columns: 1fr minmax(120px, 1fr) minmax(50px, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        justify-items: start;
+        gap: 0 10px;
         align-items: center;
         border-top: solid black 1px;
+        p {
+          width: 100%;
+        }
       }
     }
     button {

@@ -31,7 +31,7 @@ export interface Citys {
       properties: {
         city: string;
         country: string;
-        place_Id: number;
+        place_id: string;
       };
     }
   ];
