@@ -5,6 +5,7 @@ import { Weathers, Citys } from "./Interface";
 import { weatherKey, searchKey } from "./login";
 import WeatherCard from "./components/WeatherCard";
 import SearchResults from "./components/SearchResults";
+import data from "./data/data.json";
 
 function App() {
   const [weather, setWeather] = useState<Weathers>();
@@ -13,7 +14,8 @@ function App() {
 
   // initial mount
   useEffect(() => {
-    fetchWeather("london", weatherKey).then((data) => setWeather(data));
+    // fetchWeather("london", weatherKey).then((data) => setWeather(data));
+    setWeather(data);
   }, []);
 
   // on input value above 2 letters, show searches, or clear form
