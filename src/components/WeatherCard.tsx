@@ -3,7 +3,7 @@ import { Weathers } from "../Interface";
 
 const WeatherCard = ({ weather }: { weather: Weathers }) => {
   const [tempC, setTempC] = useState(true);
-console.log(weather)
+
   const setDirection = (dir: string) => {
     switch (dir) {
       case "W":

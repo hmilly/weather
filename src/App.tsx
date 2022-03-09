@@ -12,19 +12,22 @@ function App() {
   const [locationInput, setLocationInput] = useState("");
   const [citySearch, setCitySearch] = useState<Citys>();
 
-  // initial mount
+  // initial mount from internal db
   useEffect(() => {
-    // fetchWeather("london", weatherKey).then((data) => setWeather(data));
-    setWeather(data);
+    setWeather(data[0]);
   }, []);
 
   // on input value above 2 letters, show searches, or clear form
+  // ** depending if login key is loaded **
   useEffect(() => {
-    locationInput.length > 2
-      ? fetchSearches(locationInput, searchKey).then((data) =>
+    if (locationInput.length > 2) {
+      if (searchKey.length !== 0)
+        fetchSearches(locationInput, searchKey).then((data) =>
           setCitySearch(data)
-        )
-      : setCitySearch(undefined);
+        );
+    } else {
+      setCitySearch(undefined);
+    }
   }, [locationInput]);
 
   return (
@@ -45,9 +48,11 @@ function App() {
             disabled={locationInput.length > 2 ? false : true}
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              fetchWeather(locationInput, weatherKey).then((data) =>
-                setWeather(data)
-              );
+              // ** depending if login key is loaded **
+              if (weatherKey.length !== 0)
+                fetchWeather(locationInput, weatherKey).then((data) =>
+                  setWeather(data)
+                );
               setLocationInput("");
             }}
           >

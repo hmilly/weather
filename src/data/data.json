@@ -1,51 +1,29 @@
-{
-  "location": {
-    "name": "London",
-    "region": "City of London, Greater London",
-    "country": "United Kingdom",
-    "lat": 51.52,
-    "lon": -0.11,
-    "tz_id": "Europe/London",
-    "localtime_epoch": 1644164171,
-    "localtime": "2022-02-06 16:16"
-  },
-  "current": {
-    "last_updated_epoch": 1644159600,
-    "last_updated": "2022-02-06 15:00",
-    "temp_c": 10,
-    "temp_f": 50,
-    "is_day": 1,
-    "condition": {
-      "text": "Partly cloudy",
-      "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png",
-      "code": 1003
+[
+  {
+    "location": {
+      "name": "London",
+      "region": "City of London, Greater London",
+      "country": "United Kingdom",
+      "localtime": "2022-02-06 16:16"
     },
-    "wind_mph": 23,
-    "wind_kph": 37.1,
-    "wind_degree": 270,
-    "wind_dir": "W",
-    "pressure_mb": 1005,
-    "pressure_in": 29.68,
-    "precip_mm": 0.1,
-    "precip_in": 0,
-    "humidity": 66,
-    "cloud": 75,
-    "feelslike_c": 6.4,
-    "feelslike_f": 43.5,
-    "vis_km": 10,
-    "vis_miles": 6,
-    "uv": 3,
-    "gust_mph": 23.5,
-    "gust_kph": 37.8,
-    "air_quality": {
-      "co": 240.3000030517578,
-      "no2": 4.300000190734863,
-      "o3": 65.0999984741211,
-      "so2": 1.7999999523162842,
-      "pm2_5": 0.5,
-      "pm10": 0.6000000238418579,
-      "us-epa-index": 1,
-      "gb-defra-index": 1
+    "current": {
+      "temp_c": 10,
+      "temp_f": 50,
+      "is_day": 1,
+      "condition": {
+        "text": "Partly cloudy",
+        "icon": "//cdn.weatherapi.com/weather/64x64/day/116.png"
+      },
+      "wind_mph": 23,
+      "wind_kph": 37.1,
+      "wind_dir": "W",
+      "precip_mm": 0.1,
+      "humidity": 66,
+      "cloud": 75,
+      "feelslike_c": 6.4,
+      "feelslike_f": 43.5,
+      "vis_miles": 6,
+      "uv": 3
     }
   }
-}
+]
