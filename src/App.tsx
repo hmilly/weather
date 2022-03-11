@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Weather app</h1>
+        <h1>Weather</h1>
       </header>
       <main>
         <span className="searchBar">
@@ -56,7 +56,7 @@ function App() {
               setLocationInput("");
             }}
           >
-            Go!
+            <p>Go!</p>
           </button>
           {citySearch !== undefined ? (
             <ul>

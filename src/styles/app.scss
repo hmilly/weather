@@ -1,18 +1,4 @@
-@mixin btn {
-  border-radius: 5px;
-  font-size: 25px;
-  padding: 10px;
-  background-color: black;
-  color: white;
-}
-@mixin btnHover {
-  cursor: pointer;
-  background-color: navy;
-  font-size: 28px;
-}
-
 * {
-  text-shadow: black 3px 2px;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -22,23 +8,40 @@
   display: grid;
   background-image: url("../img/cloudsbg.jpeg");
   background-size: cover;
-  min-height: 100vh;
-  min-width: 100%;
-  grid-template-rows: 60px minmax(650px, 1fr);
-  grid-template-columns: minmax(300px, 1fr);
+  background-position: center center;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 1fr;
+  min-width: 300px;
+  height: 100vh;
   gap: 10px;
   align-items: start;
   justify-items: center;
+
+  // fonts for page
+  h1 {
+    font-size: 35px;
+  }
+  input,
+  button > p {
+    font-size: 25px;
+  }
+  li,
+  p {
+    text-shadow: black 3px 2px;
+    font-size: 20px;
+  }
+
   header {
     h1 {
-      color: rgb(149, 251, 255);
+      color: rgb(0, 0, 0);
       text-decoration: underline;
+      text-shadow: rgba(25, 119, 243, 0.275) 3px 2px;
     }
   }
 
   main {
     display: grid;
-    grid-template-rows: 80px minmax(500px, 1fr) 80px;
+    grid-template-rows: 80px 1fr 80px;
     grid-template-columns: 1fr;
     padding: 0 20px;
     gap: 10px;
@@ -56,16 +59,10 @@
         color: rgb(146, 142, 142);
       }
       input {
-        @include btn();
         padding: 0;
         background-color: rgba(0, 0, 0, 0.596);
       }
-      button {
-        @include btn();
-        &:hover {
-          @include btnHover();
-        }
-      }
+
       ul {
         position: absolute;
         width: 100%;
@@ -74,7 +71,6 @@
         li {
           height: 50px;
           padding: 10px;
-          font-size: 20px;
           background-color: black;
           &:hover {
             cursor: pointer;
@@ -84,11 +80,10 @@
         }
       }
     }
-
     .weatherCard {
       display: grid;
-      grid-template-rows: repeat(2, minmax(100px, 250px));
-      grid-template-columns: repeat(2, minmax(100px, 350px));
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       border: solid 3px rgba(21, 24, 90, 0.788);
       background: rgba(21, 24, 90, 0.534);
       border-radius: 10px;
@@ -97,8 +92,6 @@
         "section section"
         "div div";
       p {
-        margin: 3% 0;
-        font-size: 20px;
         font-weight: 500;
       }
       section:nth-child(1) {
@@ -112,19 +105,21 @@
         grid-template-rows: 1fr 50px;
         grid-template-columns: 1fr;
         justify-items: center;
-        align-items: center;
         img {
           height: auto;
           width: 100%;
           max-width: 150px;
         }
+        p {
+          align-self: center;
+        }
       }
       div {
         display: grid;
         grid-area: div;
-        grid-template-columns: 1fr minmax(120px, 1fr) minmax(50px, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
-        gap: 0 10px;
+        gap: 0 5px;
         align-items: center;
         border-top: solid black 1px;
         p {
@@ -132,11 +127,36 @@
         }
       }
     }
+    .temp-btn {
+      height: 60px;
+      width: 150px;
+    }
+    //searchbar & temp btns
     button {
-      @include btn();
+      border-radius: 5px;
+      padding: 10px;
+      background-color: black;
+      color: white;
       &:hover {
-        @include btnHover();
+        cursor: pointer;
+        padding-bottom: 20px;
+        background: blue;
+        transition: all 0.2s ease 0s;
       }
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    h1 {
+      font-size: 25px;
+    }
+    input,
+    button > p {
+      font-size: 18px;
+    }
+    li,
+    p {
+      font-size: 15px;
     }
   }
 }

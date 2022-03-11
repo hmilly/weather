@@ -98,10 +98,10 @@ const WeatherCard = ({ weather }: { weather: Weathers }) => {
           </p>
         </div>
       </div>
-      <button
+      <button className="temp-btn"
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => setTempC(!tempC)}
       >
-        {tempC ? "Fareinheit" : "Celsius"}
+        <p>{tempC ? "Fahrenheit" : "Celsius"}</p>
       </button>
     </>
   );
