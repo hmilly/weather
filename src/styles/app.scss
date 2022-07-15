@@ -22,7 +22,7 @@
     font-size: 35px;
   }
   input,
-  button > p {
+  button p {
     font-size: 25px;
   }
   li,
@@ -59,7 +59,8 @@
         color: rgb(146, 142, 142);
       }
       input {
-        padding: 0;
+        color: white;
+        padding: 5px;
         background-color: rgba(0, 0, 0, 0.596);
       }
 
@@ -82,8 +83,8 @@
     }
     .weatherCard {
       display: grid;
-      grid-template-rows: repeat(2, 1fr);
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 225px);
+      grid-template-columns: repeat(2, minmax(auto, 350px));
       border: solid 3px rgba(21, 24, 90, 0.788);
       background: rgba(21, 24, 90, 0.534);
       border-radius: 10px;
@@ -151,7 +152,7 @@
       font-size: 25px;
     }
     input,
-    button > p {
+    button p {
       font-size: 18px;
     }
     li,
