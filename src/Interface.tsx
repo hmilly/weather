@@ -30,6 +30,7 @@ export interface Citys {
     {
       properties: {
         city: string;
+        county: string;
         country: string;
         place_id: string;
       };

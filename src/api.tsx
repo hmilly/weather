@@ -8,7 +8,7 @@ export const fetchWeather = async (location: string, key: string) => {
 export const fetchSearches = async (location: string, key: string) => {
   const url =
     `https://geoapify-address-autocomplete.p.rapidapi.com/v1/geocode/` +
-    `autocomplete?text=${location}&type=city`;
+    `autocomplete?text=${location}&type=city&limit=5`;
   return await fetch(url, {
     method: "GET",
     headers: {
