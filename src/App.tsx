@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./styles/app.scss";
-import { fetchWeather, fetchSearches } from "./API";
+import { fetchWeather, fetchSearches } from "./fetch";
 import { Weathers, Citys } from "./Interface";
 import WeatherCard from "./components/WeatherCard";
 import SearchResults from "./components/SearchResults";
