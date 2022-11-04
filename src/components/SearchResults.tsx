@@ -12,8 +12,8 @@ const SearchResults = ({
     location.city,
     location.county,
     location.country,
-    // eslint-disable-next-line
   ]
+      // eslint-disable-next-line
     .map((f) => {
       if (f !== undefined) return f !== location.country ? `${f}, ` : `${f}`;
     })
