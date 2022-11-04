@@ -1,27 +1,32 @@
-import { Citys } from "../Interface";
+import { City } from "../interface/Interface";
 
 const SearchResults = ({
-  location,
+  cityObj,
   setLocationInput,
   setCitySearch,
 }: {
-  location: Citys["features"][0]["properties"];
+  cityObj: City;
   setLocationInput: (searchString: string) => void;
   setCitySearch: any;
 }) => {
-  const formatedLocation = [location.city, location.county, location.country]
-    // eslint-disable-next-line
-    .map((f) => {
-      if (f !== undefined) return f !== location.country ? `${f}, ` : `${f}`;
-    })
-    .join("");
+  const formatedLocation =
+    [
+      cityObj?.name,
+      cityObj?.adminDivision2?.name,
+      cityObj?.adminDivision1?.name,
+      cityObj?.country?.name,
+    ]
+      // eslint-disable-next-line
+      .map((f) =>
+        f !== cityObj.country.name && f !== undefined ? `${f}, ` : ""
+      )
+      .join("") + cityObj.country.name;
 
   return (
     <li
-      key={location.place_id}
       onClick={(e: React.MouseEvent<HTMLLIElement>) => {
         setLocationInput(formatedLocation);
-        setCitySearch("");
+        setCitySearch(null);
       }}
     >
       <p>{formatedLocation}</p>

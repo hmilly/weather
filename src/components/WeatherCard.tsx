@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Weathers } from "../Interface";
+import { Weathers } from "../interface/Interface";
 
 const WeatherCard = ({ weather }: { weather: Weathers }) => {
   const [tempC, setTempC] = useState(true);

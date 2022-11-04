@@ -70,12 +70,12 @@
         margin-top: 62px;
         list-style-type: none;
         li {
-          height: 50px;
+          display: flex;
           padding: 10px;
           background-color: black;
           &:hover {
             cursor: pointer;
-            font-weight: 500;
+            padding: 9px;
             background-color: rgb(28, 26, 53);
           }
         }

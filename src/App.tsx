@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import "./styles/app.scss";
-import { fetchWeather, fetchSearches } from "./fetch";
-import { Weathers, Citys } from "./Interface";
+import { fetchWeather, fetchSearches } from "./api/fetch";
+import { Weathers, City } from "./interface/Interface";
 import WeatherCard from "./components/WeatherCard";
 import SearchResults from "./components/SearchResults";
-import offlineData from "./data/offlineData.json";
+import offlineData from "./offlineData.json";
 
 function App() {
   const [weather, setWeather] = useState<Weathers>(offlineData[0]);
   const [locationInput, setLocationInput] = useState("");
-  const [citySearch, setCitySearch] = useState<Citys>(null);
+  const [citySearch, setCitySearch] = useState<City[]>(null);
 
   const searchKey = process.env.REACT_APP_SEARCH_KEY;
   const weatherKey = process.env.REACT_APP_WEATHER_KEY;
@@ -53,9 +53,10 @@ function App() {
           </button>
           {citySearch !== null && (
             <ul>
-              {citySearch.features?.map((cityObj) => (
+              {citySearch.map((cityObj) => (
                 <SearchResults
-                  location={cityObj.properties}
+                  key={cityObj.id}
+                  cityObj={cityObj}
                   setLocationInput={setLocationInput}
                   setCitySearch={setCitySearch}
                 />

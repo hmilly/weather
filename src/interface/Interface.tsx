@@ -25,15 +25,29 @@ export interface Weathers {
   };
 }
 
-export interface Citys {
-  features: [
-    {
-      properties: {
-        city: string;
-        county: string;
-        country: string;
-        place_id: string;
-      };
-    }
-  ];
+export interface City  {
+  id: string;
+  name: string;
+  country: {
+    name: string;
+  };
+  adminDivision1: {
+    name: string;
+  };
+  adminDivision2: {
+    name: string;
+  };
 }
+
+//{
+// features: [
+//   {
+//     properties: {
+//       city: string;
+//       county: string;
+//       country: string;
+//       place_id: string;
+//     };
+//   }
+// ];
+// }
