@@ -1,19 +1,16 @@
+import { Citys } from "../Interface";
 
 const SearchResults = ({
   location,
   setLocationInput,
   setCitySearch,
 }: {
-  location: { city: string; county: string; country: string; place_id: string };
+  location: Citys["features"][0]["properties"];
   setLocationInput: (searchString: string) => void;
   setCitySearch: any;
 }) => {
-  const formatedLocation = [
-    location.city,
-    location.county,
-    location.country,
-  ]
-      // eslint-disable-next-line
+  const formatedLocation = [location.city, location.county, location.country]
+    // eslint-disable-next-line
     .map((f) => {
       if (f !== undefined) return f !== location.country ? `${f}, ` : `${f}`;
     })

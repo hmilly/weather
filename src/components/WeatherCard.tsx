@@ -29,12 +29,12 @@ const WeatherCard = ({ weather }: { weather: Weathers }) => {
     <>
       <div className="weatherCard">
         <section>
-          <p>{weather.location.name}</p>
-          <p>{weather.location.region}</p>
-          <p>{weather.location.country}</p>
+          <p>{weather?.location?.name}</p>
+          <p>{weather?.location?.region}</p>
+          <p>{weather?.location?.country}</p>
           <p>
-            {weather.location.localtime.slice(10)}{" "}
-            {weather.location.localtime
+            {weather?.location?.localtime.slice(10)}{" "}
+            {weather?.location?.localtime
               .slice(0, 10)
               .split("-")
               .reverse()
@@ -43,58 +43,58 @@ const WeatherCard = ({ weather }: { weather: Weathers }) => {
         </section>
         <section>
           <img
-            src={weather.current.condition.icon}
+            src={weather?.current?.condition?.icon}
             alt={"current weather icon"}
           />
-          <p>{weather.current.condition.text}</p>
+          <p>{weather?.current?.condition?.text}</p>
         </section>
         <div>
           <p>
             Temp:
             <br></br>
-            {tempC ? weather.current.temp_c : weather.current.temp_f}
+            {tempC ? weather?.current?.temp_c : weather?.current?.temp_f}
             {tempC ? " C" : " F"}
           </p>
           <p>
             Wind:
             <br></br>
-            💨 {weather.current.wind_mph} mph
+            💨 {weather?.current?.wind_mph} mph
           </p>
           <p>
             Rain:
             <br></br>
-            🌧️ {weather.current.precip_mm} mm
+            🌧️ {weather?.current?.precip_mm} mm
           </p>
           <p>
             Feels like:
             <br></br>
-            {tempC ? weather.current.feelslike_c : weather.current.feelslike_f}
+            {tempC ? weather?.current?.feelslike_c : weather?.current?.feelslike_f}
             {tempC ? " C" : " F"}
           </p>
           <p>
             Direction:
             <br></br>
-            {setDirection(weather.current.wind_dir)} 🧭
+            {setDirection(weather?.current?.wind_dir)} 🧭
           </p>
           <p>
             UV:
             <br></br>
-            {setUv(weather.current.uv)}
+            {setUv(weather?.current?.uv)}
           </p>
           <p>
             Humidity:
             <br></br>
-            {weather.current.humidity} %
+            {weather?.current?.humidity} %
           </p>
           <p>
             Visibility:
             <br></br>
-            {weather.current.vis_miles} miles
+            {weather?.current?.vis_miles} miles
           </p>
           <p>
             ☁️ cover:
             <br></br>
-            {weather.current.cloud} %
+            {weather?.current?.cloud} %
           </p>
         </div>
       </div>
